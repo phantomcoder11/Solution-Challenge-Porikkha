@@ -1,0 +1,160 @@
+.Student {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    color: rgb(8, 8, 8);
+    text-align: center;
+}
+.cd {
+    flex: 30%;
+    text-align: center;
+    justify-content: center;
+   margin-right: 1%;
+}
+.ab {
+    flex: 100%;
+    margin-left: -2%;
+}
+.time {
+    font-size: 3rem;
+}
+.noticeBoard {
+    background-color: rgb(150, 137, 156, 35%);
+    height: 25vw;
+    width: 35vw;
+    border-radius: 3%;
+    font-size: 1.5rem;
+    border-color: rgb(65, 201, 242,75%);
+    border-width: 2%;
+    border-style: solid;
+}
+.right {
+    margin-top: 5%;
+}
+
+.submit_EHS {
+    display: flex;
+    margin: 0 10%;
+}
+.upload {
+    width: 40%;
+    padding: 5%;
+
+    background-color: rgb(85, 177, 85);
+    border-radius: 1rem;
+    margin-bottom: 5%;
+    margin-top: 10%;
+    margin-right: 8%;
+}
+.upload:hover {
+    background-color: rgb(50, 129, 50);
+}
+.submit {
+    width: 40%;
+    padding: 5%;
+    background-color: lightcoral;
+    border-radius: 1rem;
+    margin-bottom: 5%;
+    margin-top: 10%;
+}
+.submit:hover {
+    background-color: rgb(200, 74, 74);
+}
+
+@media screen and (max-width: 992px) {
+    div.Student {
+        flex-direction: column;
+    }
+    div.ab {
+        transform: scale(1.03);
+    }
+    div.cd {
+        padding-left: 20%;
+        padding-bottom: 7%;
+        text-align: center;
+    }
+
+    div.time {
+        margin-right: 40%;
+    }
+    div.noticeBoard {
+        padding: 10% 20%;
+    }
+}
+
+
+.model_popup{
+    width: 100%;
+    height: 1300px;
+    background-color: rgb(83, 83, 83);
+    opacity:.5;
+    position: absolute;
+}
+ .model_container .my_custom_model{
+    background-color: #fff;
+    width: 40%;
+    height: 300px;
+    border-radius: 5px;
+    opacity: 1;
+    position:absolute;
+    z-index: 20;
+}
+.model_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:600px;
+    position:absolute;
+    overflow:hidden;
+}
+
+.model_container .my_custom_model .top_bar{
+ background-color: rgb(17, 171, 236);
+ height: 50px;
+ width:100%;
+ 
+}
+
+.model_container .my_custom_model h2{
+    margin-left: 20px;
+    margin-top:10px;
+    font-size:2.5rem;
+    color:rgb(243, 19, 11)
+}
+.model_container .my_custom_model .model_msg{
+    margin-top:5px;
+    padding:8px 20px;
+    font-size: 1.5rem;
+    line-height:1.3
+}
+.model_container .my_custom_model  button{
+    border: 0px solid;
+    padding:10px;
+    
+    color: #fff;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    width: 60px;
+    background-color: rgb(17, 171, 236);
+}
+.model_container .my_custom_model {
+    position: relative;
+
+}
+
+.model_container .my_custom_model  button:focus{
+    outline:none;
+}
+
+.popup_setup{
+    position:relative;
+    display: none;
+
+}
+
+.my_name_is{
+    display: flex;
+    justify-content: start;
+    width: 50%;
+}

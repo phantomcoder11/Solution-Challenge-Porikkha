@@ -1,0 +1,6 @@
+{
+    "MONGODB_URL" : "mongodb+srv://shivam:DYlI02faUNAg7iki@email-verification.ea8dl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+"PASSWORD": "DYlI02faUNAg7iki",
+"PORT":"5000",
+"TOKEN":"teachersecrettoken"
+}

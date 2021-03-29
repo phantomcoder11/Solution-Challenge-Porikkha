@@ -1,0 +1,137 @@
+.submit_sheet_check{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding: 20px;
+}
+
+.submit_sheet_check button{
+    transition: all .3 linear
+}
+.submit_sheet_check button:hover{
+    cursor:pointer;
+    transform: scale(1.05);
+    background-color :#004A84 !important;
+    
+}
+#check_goto:hover{
+ cursor:pointer;
+}
+/* style={{background:'white' , padding:'5px 5px' , width:'100px' , height:'90px',marginLeft:'45vw',marginTop:'7vh',display:'flex',justifyContent:'spaceAround',flexDirection:'column'}} */
+
+.tot_marks{
+    display:flex;
+    align-items:center;
+    /* flex-direction: column; */
+    justify-content:space-evenly;
+    position:absolute;
+    top: 10px;
+    right:30px;
+    background-color:white;
+    margin: 0 auto;
+    padding: 5px;
+    width: 200px;
+    height: 60px;
+
+}
+
+.tot_marks button{
+    width: 50px;
+    border: 1px solid;
+    background-color: #fff;
+
+}
+.tot_marks span{
+    font-size:1.5rem;
+    
+}
+.paper_container_exam{
+ display:flex;
+ justify-content:space-between;
+ padding: 20px 5%; 
+}
+
+/*  */
+.header_exam_section span{
+    display:flex;
+    /* margin: 10px 20px; */
+    justify-content: center;
+    align-items:center;
+    flex-direction:column;
+    
+}
+
+.section_marking{
+    position: relative;
+    display:flex;
+    padding: 20px;
+    background-color: rgb(36, 196, 250);
+    border-radius:10px;
+    height:auto;
+    width: 100%;
+    
+}
+.top_section_exam{
+    padding: 1% 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+.btn_marks button,input{
+    /* margin: 10px 20px; */
+    padding: 3px;
+    border: 0px solid;
+    text-align: center;
+}
+
+
+
+ .details_com h3{
+    font-size: 3rem !important;
+    text-align: center;
+    margin-bottom: 8px;
+    padding: 1% 5%;
+}
+.details_com {
+    display:flex;
+    justify-content:center;
+    background-color: rgb(192, 233, 247);
+    width: 30%;
+    /* margin: 0% auto; */
+    padding:10px 10px ;
+    border-radius: 10px;
+}
+
+.details_com .student_details {
+    margin: 10px;
+    width: 90%;
+    font-size: 1rem;
+    
+}
+.details_com .student_details span{
+    font-size:1.2rem;
+    margin-right:15px;    
+    margin-bottom:10px !important ;
+}
+
+.status_detail_jt{
+ display: flex;
+ justify-content:space-evenly;
+ align-items:center;
+}
+.status_detail_jt button{
+    height: 50px;
+    
+}
+.webviewer{
+    
+    width: 700px;
+    height: 800px;
+}
+.status_detail_jt{
+    padding: 1% 5%;
+}
+
+
+/* #004A84 */
+/* 0093D4 */

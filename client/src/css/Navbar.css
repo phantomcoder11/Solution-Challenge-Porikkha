@@ -1,0 +1,30 @@
+
+.NavbarItems {
+    background: #0093D4;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    max-width: 100%;
+}
+.NavbarItems .navbar-logo {
+    color: #fff;
+    cursor: pointer;
+    margin-top:1px;
+}
+
+@media screen and (max-width: 960px) {
+
+    .NavbarItems {
+        position: relative;
+    }
+
+    .navbar-logo 
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(25%, 50%);
+    }
+}

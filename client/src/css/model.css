@@ -1,0 +1,88 @@
+.model .modal-content{
+    background: #0078A6;
+}
+
+.model .navbar-brand{
+   
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+.model .create,.modal .cancel{
+    padding: 23px 15px 5px;
+}
+.model .modal-title{
+    font-size: 2.3rem;
+    padding-bottom: 2rem;
+}
+
+.model .modal {
+    text-align: center;
+  }
+  
+  @media screen and (min-width: 768px) { 
+   .model .modal:before {
+      display: inline-block;
+      vertical-align: middle;
+      content: " ";
+      height: 100%;
+    }
+  }
+  
+  .model .modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  .model .name,.model .email,.model .phnNo{
+    width: 50%;
+    padding-top: 1rem ;
+    padding-bottom: 0.8rem;
+    padding-left: 0.7rem;
+    border: 3px solid #1DA6CF;
+border-radius: 2rem ;
+font-size: 1.3rem;
+margin-bottom: 2rem;
+background: rgba(236, 232, 232, 0.12);
+}
+.model ::placeholder{
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    padding-top: 2rem ;
+    padding-bottom: 1rem;
+}
+.model .modal-body{
+    text-align: center;
+}
+
+.model input:focus::placeholder{
+  
+    transition-duration: 0.7s;
+    font-size: 0.6rem;
+    transform: translateY(-10px);
+    text-align: left;
+    color: #fff;
+}
+.model input:focus{
+    outline: none;
+}
+.model input{
+    color: #fff;
+}
+.model .close{
+font-size: 3rem;
+margin-right: 0.7rem;
+color: #036df8;
+}
+.model .close:hover{
+    transform: scale(1.3);
+    color:blue;
+}
+.model .close:focus{
+outline: none;
+}
+.model input::placeholder{
+    transition: 0.5s;
+}

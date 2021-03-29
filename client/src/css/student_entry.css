@@ -1,0 +1,68 @@
+*
+{
+    margin:0%;
+}
+.SEhead{
+    color: #1DA6CF;
+    font-size: 4rem;
+    margin: 3rem 0 13vh 0;
+    text-align: center;
+    text-shadow: 1px 2px 3px rgba(144,126,126,0.66);
+}
+.SEtop{
+    color:rgb(255, 255, 255);
+    font-size: 1.3rem;
+    margin: 10% 0 0 0;
+}
+.SEinput{
+    text-align: center;
+    padding: 5.5% 5% 5.5% 5%;
+    /* width: %; */
+    background-color: #33c0eb;
+    color: rgb(255, 255, 255);
+    border: whitesmoke;
+    border: 10px;
+    border-radius: 1.6vw;
+    outline: none;
+    border: 2px solid #b9babb;
+    font-size: large;
+}
+.SE_main ::placeholder{
+    color: rgb(255, 255, 255);
+}
+.SEbutton{
+ 
+    padding: 2.5% 1% 1.5% 1%;
+  margin: 2% 10% 0 10%;
+    background-color: #0093D4;
+    color: rgb(255, 255, 255);
+    border: whitesmoke;
+    border: 10px;
+    border-radius: 1.6vw;
+    outline: none;
+    border: 2px solid #b9babb;
+    font-size: large;
+}
+.SEbutton:hover{
+    transform: scale(1.05);
+   
+    background-color: #056a95;
+}
+.SEfinal{
+    padding: 1.5% 1% 1.5% 1%;
+   margin: 5% 10% 0 8%;
+    text-align: center;
+    background-color: #0093D4;
+    color: rgb(255, 255, 255);
+    border: whitesmoke;
+    border: 10px;
+    border-radius: 1vw;
+    outline: none;
+    border: 2px solid #b9babb;
+    font-size: large;
+}
+.SEfinal:hover{
+
+    transform: scale(1.01);
+    background-color: #056a95;
+}

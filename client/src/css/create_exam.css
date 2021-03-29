@@ -1,0 +1,182 @@
+#createheading {
+    color: #000000;
+    text-align: center;
+    justify-content: center;
+    /* margin-top: 4.5%; */
+    font-size: 8vh;
+    /* margin-right: 44%; */
+    font-weight: 900;
+}
+.settime {
+    font-size: 1.4rem;
+padding-top: 0%;
+margin-top:1%;
+    margin-right: 44%;
+
+}
+.upload_newexam {
+    padding-top: 0%;
+    font-size: 1.4rem;
+    margin-right: 44%;
+    margin-top: 2%;
+}
+.newexambutton {
+    text-align: center;
+    padding: 1.5% 1% 1.5% 1%;
+    width: 25%;
+    background-color: #A7E2F3;
+    color: rgb(255, 255, 255);
+    border: whitesmoke;
+    border: 10px;
+    border-radius: 40px;
+    outline: none;
+    border: 2px solid #b9babb;
+    font-size: large;
+}
+.newexambutton_top {
+    text-align: center;
+    padding: 1.5% 1% 1.5% 1%;
+    width: 25%;
+    background-color: #A7E2F3 !important; 
+    color: #fff;
+    border: 10px;
+    border-radius: 1vw;
+    outline: none;
+    border: 2px solid #b9babb;
+    font-size: large;
+    margin-top: 4%;
+}
+.Enter_examForm .newexambutton_time {
+    text-align: center;
+    padding: 1.5% 1% 1.5% 1%;
+    width: 12%;
+    background-color: #A7E2F3;
+    color: #fff;
+    border: whitesmoke;
+    border: 10px;
+    border-radius: 1vw;
+    outline: none;
+    border: 2px solid #b9babb;
+    font-size: large;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 1%;
+}
+.newexambutton_top ,.Enter_examForm .newexambutton_time ::placeholder
+{
+    color:#fff;
+}
+.newexambutton:hover {
+    color: rgb(255, 255, 255);
+    background-color: #1DA6CF;
+}
+.newexamsubmit {
+    font-size: large;
+    text-align: center;
+    padding: 1.5% 3% 1.5% 3%;
+ 
+    background-color: #1DA6CF;
+    color: rgb(255, 255, 255);
+    border: whitesmoke;
+    border: 10px;
+    border-radius: 1vw;
+    outline: none;
+    border: 2px solid #b9babb;
+    
+
+    
+}
+.Enter_examForm .button_container button{
+    
+    display: block !important;
+    margin: 40px 10px ;
+}   
+.Enter_examForm .button_container{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    width:100%;
+    margin: 0 auto;
+    width: 60%;
+}
+.newexamsubmit:hover {
+    color: rgb(255, 255, 255);
+    background-color: #0a7596;
+}
+.newMCQsubmit {
+    font-size: large;
+    text-align: center;
+    padding: 1.5% 3% 1.5% 3%;
+    background-color: #1DA6CF;
+    color: rgb(255, 255, 255);
+    border: whitesmoke;
+    border: 10px;
+    border-radius: 1vw;
+    outline: none;
+    border: 2px solid #b9babb;
+    
+}
+.newMCQsubmit:hover {
+    color: rgb(255, 255, 255);
+    background-color: #1DA6CF
+}
+.CElastsubmit{
+    font-size: large;
+    text-align: center;
+    padding: 1.5% 1.5% 1.5% 1.5%;
+    /* margin: auto; */
+    margin: 1% 0 2% 0;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    /* border: whitesmoke; */
+    border: 10px;
+    border-radius: 1vw;
+    outline: none;
+    border: 2px solid #b9babb;
+    /* transition-delay: 2s; */
+}
+.CElastsubmit:hover{
+    transform: scale(1.08);
+}
+#hello {
+    text-align: center;
+}
+.personal_msg{
+    padding: 1%;
+   font-size: large;
+}
+.Enter_class button
+{
+    text-align: center;
+    background-color:#1DA6CF ;
+    color: #fff;
+    font-weight: 300;
+    width: 15%;
+    padding: 1%;
+    border-radius: 10px;
+    transform: translateX(640px);
+    font-size: 1rem;
+}
+.Enter_class button:hover {
+    color: rgb(255, 255, 255);
+    background-color:#1DA6CF;
+}
+@media only screen and (max-width: 600px)
+{
+    .Enter_class button
+{
+    text-align: center;
+    background-color:#1DA6CF;
+    color: #fff;
+    font-weight: 200;
+    width: 5%;
+    padding: 0.5%;
+    border-radius: 10px;
+    transform: translateX(640px);
+    font-size: 0.5rem;
+}
+.Enter_class button:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+}
