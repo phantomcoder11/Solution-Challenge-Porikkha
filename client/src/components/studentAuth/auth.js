@@ -26,7 +26,7 @@ const Auth = () => {
     const data = { tokenId: res.tokenId };
     
     const response = await axios.post(
-      'https://thawing-inlet-03435.herokuapp.com/student/login',
+      'http://porikkha.centralus.cloudapp.azure.com/student/login',
       data
       );
       
@@ -87,7 +87,7 @@ const Auth = () => {
 
           <div style={{ marginTop: '-10vh' }}>
             <GoogleLogin
-              clientId='754763699582-i6l0gqb6ffj80i77un15s743ti10bej0.apps.googleusercontent.com'
+              clientId='754763699582-2gkh2m088eh6srrrtfckakdne5ahcbbh.apps.googleusercontent.comS'
               buttonText='Login with google'
               onSuccess={responseSuccessGoogle}
               onFailure={responseErrorGoogle}
