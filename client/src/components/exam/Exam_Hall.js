@@ -26,6 +26,7 @@ const Exam_Hall = ({location}) => {
     const [ startDate , setstartDate ] = useState(0);
 
     const END_POINT = 'localhost:5000';
+    //const END_POINT = 'https://thawing-inlet-03435.herokuapp.com';
 
     const [ name , setName ] = useState('');
     const [ room , setRoom ] = useState('');
@@ -43,8 +44,6 @@ const Exam_Hall = ({location}) => {
     const [ submitStatus , setSubmitStatus ] = useState(false);
  
     const arrayBufferToBase64 = (buffer)=>{
-
-        const END_POINT = 'https://thawing-inlet-03435.herokuapp.com';
 
         var binary = '';
      
@@ -93,7 +92,7 @@ const Exam_Hall = ({location}) => {
 
               console.log(examS.data.exam.timeLength.split(":")[0] ," ",examS.data.exam.timeLength.split(":")[1], x);
           
-              setstartDate(new Date().getTime() + x);
+              setstartDate(examS.data.exam.startTime + x);
 
             }
   
@@ -240,6 +239,7 @@ const Exam_Hall = ({location}) => {
 
    useEffect(()=>{
        
+      const fetchData = async ()=>{
        
        window.onbeforeunload = confirmExit;
            function confirmExit()
@@ -272,7 +272,8 @@ const Exam_Hall = ({location}) => {
            if(check_web_cam){
                document.querySelector(".popup_setup").style.display="none";
            }
-           
+        }
+        fetchData();  
        
    },[tabChange,check_web_cam])
 

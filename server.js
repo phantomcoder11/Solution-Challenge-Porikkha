@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const app = require('./app');
 require('dotenv').config();
 const config = require('config');
-const MONGODB_URL = config.get('MONGODB_URL');
+//const MONGODB_URL = config.get('MONGODB_URL');
 
 const socketio = require('socket.io');
 const http = require('http');
@@ -24,7 +24,7 @@ const server = http.createServer(app);
 
 const io = socketio(server);
 
-mongoose.connect(MONGODB_URL, {
+mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -42,7 +42,7 @@ db.once('open', () => {
 io.on('connection', (socket) => {
   console.log('Web sockets initiated');
 
-  // a student or teacher enters a room by its room name
+  // a student or teacher enters a room by its room name for subjective exam
   socket.on('joinRoom', async ({ username, room }) => {
     let user = await removeUserByName(username, room);
 

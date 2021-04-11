@@ -14,9 +14,12 @@ const Login=(props)=>{
   });
 
   useEffect(() => {
-    if(userAuth){
-      props.history.push('/');
+    const fetchData = async ()=>{
+      if(userAuth){
+        props.history.push('/');
+      }
     }
+    fetchData();
   }, [userAuth , props.history])
 
   const {email,password} = teacherl;

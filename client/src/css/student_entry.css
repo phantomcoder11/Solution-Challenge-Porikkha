@@ -66,3 +66,12 @@
     transform: scale(1.01);
     background-color: #056a95;
 }
+.inputStyle input[type="radio"] {
+    transform: scale(2);
+}
+.inputStyle input[type="radio"]:after {
+    transform: scale(2);
+}
+.inputStyle input[type="radio"]:checked:after {
+    transform: scale(1);
+}

@@ -1,14 +1,17 @@
-import React , { useEffect , useState , useContext , useRef } from "react";
+import React , { useEffect , useState , useContext , useRef , lazy , fallback, Suspense } from "react";
 import "../../css/exam.css";
 
 import { useParams , Link } from 'react-router-dom';
+import queryString from 'query-string';
 import axios from 'axios';
 
 import StudentContext from '../../context/studentContexts/StudentContext';
 import Noresults from "./Noresults";
 import Navbar  from '../navbar/Navbar';
 
-const Exam=()=>{
+import download from 'js-file-download';
+
+const Exam=({location})=>{
 
     const { _id } = useParams();
 
@@ -17,6 +20,10 @@ const Exam=()=>{
     const [ exam , setExam ] = useState(null);
 
     const [ studentsLength , setStudentLength ] = useState(0);
+
+    const [ _status , setStatus ] = useState(-1);
+
+    const [ url , setUrl ] = useState('');
 
     const { getStudents , searchStudentName , searchStudentId , clearStudent , studentsofExam , search , getCheckStatus , checkedStatus } = useContext(StudentContext);
 
@@ -33,6 +40,8 @@ const Exam=()=>{
 
     }
 
+    console.log(url);
+
     const handleChangeScholarId = (e)=>{
 
         if(searchId.current.value!==''){
@@ -44,7 +53,24 @@ const Exam=()=>{
     }
 
     useEffect(async () => {
-        const response = await axios.get(`/exam/getExamDetails/${_id}`);
+
+       const { status } = queryString.parse(location.search);
+
+       setStatus(status);
+      
+       const fetchData = async ()=>{
+
+        let response;
+
+        if(parseInt(status)===1){
+            response = await axios.get(`/exam/getExamDetails/${_id}`);
+       
+        }else if(parseInt(status)===2){
+        
+            response = await axios.get(`/objective_exam/getExamDetails/${_id}`);
+        }
+
+        console.log(response);
 
         await setExam(response.data.exam);
 
@@ -54,8 +80,10 @@ const Exam=()=>{
 
         await getCheckStatus();
 
-        await getStudents(_id);
-    }, [])
+        await getStudents(_id,status);
+       }
+       fetchData();
+    }, [location.search])
 
     const anchorLink = {
       color:'#000',
@@ -80,8 +108,41 @@ const Exam=()=>{
       localStorage.setItem("student_id",JSON.stringify(id));
     }
 
+    const Export_List = async (e)=>{
+
+      if(parseInt(_status)===1){
+
+        const downloadFile = () => {
+        
+           axios.get(`/exam/getStudentsExcel/${_id}`)
+        
+            .then(resp => {
+          
+                  download(resp.data,'students.xlsx');
+           });
+       }
+
+       downloadFile();
+      
+      }else if(parseInt(_status)===2){
+
+        const downloadFile = () => {
+        
+           axios.get(`/objective_exam/getStudentsExcel/${_id}`)
+         
+             .then(resp => {
+           
+                   download(resp.data,'students.xlsx');
+            });
+        }
+
+        downloadFile();
+
+      }
+    }
+
     return (
-      <div id='ExamId'>
+     <div id='ExamId'>
       <Navbar />
       <div className="PExam">
       <h1>{exam!==null ? exam.name : 'Exam Name' }</h1>
@@ -107,12 +168,28 @@ const Exam=()=>{
                            <th style={{fontWeight:'bold'}}>Marks</th>
                         </tr>
 
-                        { search !== null ? search.length===0 ? 
-                 <Noresults /> : 
+              { search !== null ? search.length===0 ? 
+
+                <Noresults /> : 
                 search.map(
                   student=>(
                         <tr style={{background:'#F2F0F0'}}>
-                          <td><Link onClick={()=>{storeLocal(student._id)}} to={`/getStudentDetails`} style={anchorLink}>{student.name}</Link></td> 
+                         
+                          <td>
+                            { parseInt(_status)===1 ? 
+                               
+                               <Link onClick={()=>{storeLocal(_id)}} to={`/getStudentDetails`} style={anchorLink}>
+                              
+                                  {student.name}
+                               </Link> :
+    
+                               <Link to={`/Final_Submission?_id=${_id}&studentId=${student._id}`} style={anchorLink}>
+                              
+                                {student.name}
+                             </Link>
+                            } 
+                          </td> 
+                         
                           <td>{student.scholarId}</td>
                           <td>{student.email}</td>
                           <td>{student.status===false?'false':'true'}</td>
@@ -120,12 +197,32 @@ const Exam=()=>{
                          </tr> 
                   )
                 ) : 
-                studentsofExam.length===0 ? 
-                <Noresults /> :
-                studentsofExam.map(
+                 studentsofExam.length===0 ? 
+                
+                 <Noresults /> :
+                 
+                 studentsofExam.map(
+                 
                   student=>(
+                 
                       <tr style={{background:'#F2F0F0'}}>
-                        <td><Link onClick={()=>{storeLocal(student._id)}} to={`/getStudentDetails`} style={anchorLink}>{student.name}</Link> </td>
+                    
+                        <td>
+
+
+                        { parseInt(_status)===1 ? 
+                               
+                               <Link onClick={()=>{storeLocal(student._id)}} to={`/getStudentDetails`} style={anchorLink}>
+                              
+                                  {student.name}
+                               </Link> :
+                               <Link to={`/Final_Submission?_id=${_id}&studentId=${student._id}`} style={anchorLink}>
+                              
+                                {student.name}
+                             </Link>
+                            } 
+                        </td>
+                    
                         <td>{student.scholarId}</td>
                         <td>{student.email}</td>
                         <td>{student.status===false?'false':'true'}</td>
@@ -133,7 +230,7 @@ const Exam=()=>{
                       </tr> 
                   )
                 ) 
-           }
+              }
     </table>
                   
   </div>
@@ -156,6 +253,7 @@ const Exam=()=>{
       
     </table>
 </div>
+{ parseInt(_status)===1 ? 
 <div className="status">
     <h3 style={{marginBottom:'25px',marginLeft:'0px',fontWeight:'bold',fontSize:'105%'}}>Check Status</h3>
     <table>
@@ -168,7 +266,16 @@ const Exam=()=>{
             <td>{studentsLength - checkedStatus}</td>
         </tr>
     </table>
+  </div>
+  : null}
+
+   <div>
+
+      <button className='SEfinal' onClick={Export_List}>
+          Export Student List
+      </button>
    </div>
+  
   </div>
  </div>
 </div>

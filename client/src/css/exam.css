@@ -118,6 +118,26 @@ textarea{
 {
     transform: translateX(-80px);
 }
+
+.SEfinal{
+    padding: 6% 4% 6% 4%;
+    margin: 5% 10% 0 8%;
+    text-align: center;
+    background-color: #0093D4;
+    color: rgb(255, 255, 255);
+    border: whitesmoke;
+    border: 10px;
+    border-radius: 1vw;
+    outline: none;
+    border: 2px solid #b9babb;
+    font-size: large;
+}
+.SEfinal:hover{
+
+    transform: scale(1.01);
+    background-color: #056a95;
+}
+
 @media (max-width: 800px) {
     .flex-container {
       flex-direction: column;

@@ -18,7 +18,7 @@ import {
 
 const AuthState = (props) => {
   const initialState = {
-    userAuth: null,
+    userAuth:localStorage.getItem('token'),
     errors: null,
     teacher: null
   };

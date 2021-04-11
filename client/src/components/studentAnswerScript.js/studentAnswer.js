@@ -1,7 +1,6 @@
 import React,{ useEffect, useState ,useRef} from 'react';
 import axios from 'axios';
 import WebViewer from "@pdftron/webviewer"
-import { useParams, Link } from 'react-router-dom';
 import "../../css/test.css";
 import { markButton , buttonS , buttonM  , markContainerDesciption , markListStyle , questionAnswer } from './studentCSS';
 import Navbar  from "../navbar/Navbar";
@@ -45,74 +44,76 @@ let _id=  JSON.parse(localStorage.getItem("student_id"));
   
   useEffect(async ()=>{
       
-if(_id!=undefined){
+  const fetchData =  async ()=>{
+    if(_id!=undefined){
     
-   const response = await axios.get(`/student/getStudentDetails/${_id}`);   
-
-   await setStudent(response.data);
-
-   const questionPaper = await axios.get(`/exam/getQuestionPaper/${response.data.student.owner}`);
-
-   const base64FlagQ = `data:${questionPaper.data.exam.questionPaperType};base64,`;
-           
-   const imageStrQ = arrayBufferToBase64(questionPaper.data.exam.questionPaper.data);
+      const response = await axios.get(`/student/getStudentDetails/${_id}`);   
    
-   setQuestionPaper( base64FlagQ + imageStrQ );
-
-   setQuestionPaperType(questionPaper.data.exam.questionPaperType);
-
-   setExamName(questionPaper.data.exam.name);
-
-   await setMarksList(response.data.student.marksDistribution);
+      await setStudent(response.data);
    
-   await setTotalMarks(response.data.student.marks);
-
-   const base64Flag = `data:${response.data.student.answerPaperType};base64,`;
-           
-   const imageStr = arrayBufferToBase64(response.data.student.answerPaper.data);
+      const questionPaper = await axios.get(`/exam/getQuestionPaper/${response.data.student.owner}`);
    
-   setPdfSrc( base64Flag + imageStr );
-
-
-
-
-  //  pdf tron
-  WebViewer(
-    {
-      path: 'lib',
-      initialDoc:pdfSrc,
-    },
-    viewer.current,
-  ).then((instance) => {
-
-    const arr = new Uint8Array(response.data.student.answerPaper.data);
-    const blob = new Blob([arr], { type: 'application/pdf' });
-    instance.loadDocument(blob, { filename: 'myfile.pdf' });
-
-
-    // const arr = new Uint8Array(pdfSrc);
-    // const blob = new Blob([imageStr], { type: 'application/pdf' });
-    // instance.loadDocument(blob, { filename: 'myfile.pdf' });
-
-    const { docViewer, Annotations } = instance;
-    const annotManager = docViewer.getAnnotationManager();
-    docViewer.on('documentLoaded', () => {
-      const rectangleAnnot = new Annotations.RectangleAnnotation();
-      rectangleAnnot.PageNumber = 1;
-      // values are in page coordinates with (0, 0) in the top left
-      rectangleAnnot.X = 100;
-      rectangleAnnot.Y = 150;
-      rectangleAnnot.Width = 500;
-      rectangleAnnot.Height = 600;
-      rectangleAnnot.Author = annotManager.getCurrentUser();
-
-      annotManager.addAnnotation(rectangleAnnot);
-      // need to draw the annotation otherwise it won't show up until the page is refreshed
-      annotManager.redrawAnnotation(rectangleAnnot);
-    });
-  });
-
-}
+      const base64FlagQ = `data:${questionPaper.data.exam.questionPaperType};base64,`;
+              
+      const imageStrQ = arrayBufferToBase64(questionPaper.data.exam.questionPaper.data);
+      
+      setQuestionPaper( base64FlagQ + imageStrQ );
+   
+      setQuestionPaperType(questionPaper.data.exam.questionPaperType);
+   
+      setExamName(questionPaper.data.exam.name);
+   
+      await setMarksList(response.data.student.marksDistribution);
+      
+      await setTotalMarks(response.data.student.marks);
+   
+      const base64Flag = `data:${response.data.student.answerPaperType};base64,`;
+              
+      const imageStr = arrayBufferToBase64(response.data.student.answerPaper.data);
+      
+      setPdfSrc( base64Flag + imageStr );
+   
+   
+   
+   
+     //  pdf tron
+     WebViewer(
+       {
+         path: 'lib',
+         initialDoc:pdfSrc,
+       },
+       viewer.current,
+     ).then((instance) => {
+   
+       const arr = new Uint8Array(response.data.student.answerPaper.data);
+       const blob = new Blob([arr], { type: 'application/pdf' });
+       instance.loadDocument(blob, { filename: 'myfile.pdf' });
+   
+   
+       // const arr = new Uint8Array(pdfSrc);
+       // const blob = new Blob([imageStr], { type: 'application/pdf' });
+       // instance.loadDocument(blob, { filename: 'myfile.pdf' });
+   
+       const { docViewer, Annotations } = instance;
+       const annotManager = docViewer.getAnnotationManager();
+       docViewer.on('documentLoaded', () => {
+         const rectangleAnnot = new Annotations.RectangleAnnotation();
+         rectangleAnnot.PageNumber = 1;
+         // values are in page coordinates with (0, 0) in the top left
+         rectangleAnnot.X = 100;
+         rectangleAnnot.Y = 150;
+         rectangleAnnot.Width = 500;
+         rectangleAnnot.Height = 600;
+         rectangleAnnot.Author = annotManager.getCurrentUser();
+   
+         annotManager.addAnnotation(rectangleAnnot);
+         // need to draw the annotation otherwise it won't show up until the page is refreshed
+         annotManager.redrawAnnotation(rectangleAnnot);
+       });
+     });
+   }
+   }
+   fetchData();
   },[])
 
   const handleChange = (e)=>{

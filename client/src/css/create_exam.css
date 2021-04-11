@@ -161,6 +161,15 @@ margin-top:1%;
     color: rgb(255, 255, 255);
     background-color:#1DA6CF;
 }
+.inputStyle input[type="radio"] {
+    transform: scale(2);
+}
+.inputStyle input[type="radio"]:after {
+    transform: scale(2);
+}
+.inputStyle input[type="radio"]:checked:after {
+    transform: scale(1);
+}
 @media only screen and (max-width: 600px)
 {
     .Enter_class button

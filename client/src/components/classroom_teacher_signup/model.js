@@ -49,20 +49,24 @@ const Model = ({open,isClose,children}) => {
     });
     const [perform,setPerform]=useState('Create');
     useEffect(() => {
-        const changeDetails=(name,number)=>{
-            setClassroom({
-                name:name,
-                strength:number
-            })
-         }
-        if(editDetails!==null && open===true){
-          changeDetails(editDetails.name, editDetails.strength);
-          setPerform('Edit');
+        const fetchData1 = async ()=>{
+            const changeDetails=(name,number)=>{
+                setClassroom({
+                    name:name,
+                    strength:number
+                })
+             }
+            if(editDetails!==null && open===true){
+              changeDetails(editDetails.name, editDetails.strength);
+              setPerform('Edit');
+            }
+            else{
+              changeDetails('','');
+              setPerform('Create');
+              
+            }
         }
-        else{
-          changeDetails('','');
-          setPerform('Create');
-        }
+        fetchData1();
     }, [open])
 
     const { name, strength } = classroom ;

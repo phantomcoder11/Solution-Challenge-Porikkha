@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react'
+import React,{ useState } from 'react'
 import GoogleLogin from 'react-google-login';
 import axios from 'axios';
 
@@ -26,7 +26,7 @@ const Auth = () => {
     const data = { tokenId: res.tokenId };
     
     const response = await axios.post(
-      'http://porikkha.centralus.cloudapp.azure.com/student/login',
+      'http://localhost:5000/student/login',
       data
       );
       
@@ -87,7 +87,7 @@ const Auth = () => {
 
           <div style={{ marginTop: '-10vh' }}>
             <GoogleLogin
-              clientId='754763699582-2gkh2m088eh6srrrtfckakdne5ahcbbh.apps.googleusercontent.comS'
+              clientId='683145953672-oc94svc2ngglohb86jm50i9ft47kh6qm.apps.googleusercontent.com'
               buttonText='Login with google'
               onSuccess={responseSuccessGoogle}
               onFailure={responseErrorGoogle}

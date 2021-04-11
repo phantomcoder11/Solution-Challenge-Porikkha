@@ -39,5 +39,11 @@ classroomSchema.virtual('exams',{
     foreignField:'classroomOwner'
  })
 
+ classroomSchema.virtual('obj_exams',{
+    ref:'ObjectiveExam',
+    localField:'_id',
+    foreignField:'classroomOwner'
+ })
+
 const Classroom=mongoose.model("Classroom",classroomSchema);
 module.exports=Classroom;

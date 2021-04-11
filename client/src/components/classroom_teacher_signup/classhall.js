@@ -22,16 +22,22 @@ const Classhall = () => {
 
     const [classes , setClasses]=useState(null);
 
-    useEffect(async ()=>{
-        if(teacherState===null){
-          await getTeacher();
-          await setTeacherState(teacher);
-        }
-     },[teacher]);
+    useEffect(()=>{
+        const fetchData = async ()=>{
+            if(teacherState===null){
+              await getTeacher();
+              await setTeacherState(teacher);
+            }
+         }
+         fetchData();
+    },[teacher]);
 
-    useEffect(async ()=>{
-           await  getClassroom();
-           await  setClasses(classRooms);
+    useEffect(()=>{
+        const fetchDataC = async ()=>{
+            await  getClassroom();
+            await  setClasses(classRooms);
+        }
+        fetchDataC();
     },[classRooms])
 
     const handleChange=()=>{

@@ -16,7 +16,7 @@ import {
      case CONFIRM_EMAIL:
        return {
          ...state,
-         userAuth: false
+         userAuth: null
        };
      case SUCCESS_REGISTER:
      case SUCCESS_LOGIN:

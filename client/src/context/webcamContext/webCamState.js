@@ -1,7 +1,6 @@
 import React,{useReducer} from 'react';
 import WebcamReducer from './webcamReducer';
 import WebcamContext from './webcamContext';
-import axios from 'axios';
 import { CHECK_WEB } from '../types';
 
 const WebCamState=(props)=>{

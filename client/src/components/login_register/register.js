@@ -17,10 +17,13 @@ const Register = (props) => {
   const [hide, setHide] = useState(true);
 
   useEffect(() => {
-    if (userAuth) {
-      props.history.push('/');
+    const fetchData = async ()=>{
+      if(userAuth){
+        props.history.push('/');
+      }
     }
-  }, [userAuth, props.history]);
+    fetchData();
+  }, [userAuth , props.history])
 
   const [teacher, setTeacher] = useState({
     name: '',

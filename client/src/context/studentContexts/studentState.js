@@ -14,8 +14,15 @@ const StudentState=(props)=>{
 
    const [state, dispatch] = useReducer(StudentReducer, initialState);
 
-   const getStudents = async (_id)=>{
-      const res = await axios.get(`/exam/getExamDetails/${_id}`)
+   const getStudents = async (_id,status)=>{
+
+    let res;
+
+    if(parseInt(status)===1){
+      res = await axios.get(`/exam/getExamDetails/${_id}`)
+    }else{
+      res = await axios.get(`/objective_exam/getExamDetails/${_id}`)
+    }
       dispatch({
          type:GET_STUDENTS,
          payload:res.data.students

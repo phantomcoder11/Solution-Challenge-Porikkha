@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import "./Timer.css";
 class Timer extends Component {
@@ -57,7 +56,7 @@ class Timer extends Component {
   };
 
   render() {
-    const { days, hours, minutes, seconds, expired } = this.state;
+    const {  hours, minutes, seconds, expired } = this.state;
     if (expired) {
       return <div className="expired">Expired :(</div>;
     }

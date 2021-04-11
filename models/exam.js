@@ -14,6 +14,10 @@ const examSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    startTime:{
+        type:Number,
+        required:true
+     },
     questionPaperType:{
         type:String,
         required:true

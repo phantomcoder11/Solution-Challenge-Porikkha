@@ -2,6 +2,7 @@ const express = require("express");
 const router = new express.Router();
 
 const multer = require("multer");
+const exceljs = require('exceljs');
 const Exam = require('../models/exam');
 
 const mongoose = require('mongoose');
@@ -29,9 +30,10 @@ router.post('/uploadQuestionPaper', upload.single('upload_question_paper')  , as
   const timeL = req.body.hour + ':' + req.body.minute;
 
     const exam = new Exam({
-       name : req.body.name,
+        name : req.body.name,
         timeLength:timeL,
         date:new Date().toISOString(),
+        startTime:new Date().getTime(),
         questionPaperType:req.file.mimetype,
         questionPaper:req.file.buffer,
         classroomOwner:mongoose.Types.ObjectId(req.body._id)
@@ -111,6 +113,64 @@ router.get('/getQuestionPaper/:_id', async (req,res)=>{
     console.log(error);
     
     res.json({error:'Internal Server Error'});
+
+  }
+})
+
+router.get('/getStudentsExcel/:_id',async (req,res)=>{
+   
+  try {
+
+     const response = await Exam.findById(req.params._id); 
+     
+     if(response===null){
+        return res.json({ error : 'Unable to fetch request' });
+     }
+     
+     await response.populate('students').execPopulate();
+
+     const workbook = new exceljs.Workbook();
+
+     const worksheet = workbook.addWorksheet('Students');
+
+     worksheet.columns = [
+       // name scholarId email status marks
+        { header:'name' , key:'name' , width:10 },
+        { header:'scholarId' , key:'scholarId' , width:10 },
+        { header:'email' , key:'email' , width:10 },
+        { header:'status' , key:'status' , width:10 },
+        { header:'marks' , key:'marks' , width:10 }
+     ]
+
+     await response.students.forEach(student => {
+          worksheet.addRow({
+            name : student.name ,
+            scholarId : student.scholarId ,
+            email : student.email ,
+            status : student.status ,
+            marks : student.marks
+          })
+     });
+
+     worksheet.getRow(1).eachCell((cell)=>{
+        cell.font = { bold : true }
+     })
+
+     await workbook.xlsx.writeFile(`./uploads/students.xlsx`);
+
+     const fileLocation = `./uploads/students.xlsx`;
+
+     const file = 'students.xlsx' ;
+     
+     res.download( fileLocation , file , async (error)=>{
+        
+          console.log("Error : ", error);
+
+          await fs.unlink(`./uploads/students.xlsx`);
+     });
+
+   } catch (error) {
+     res.status(500).json(error);
 
   }
 })

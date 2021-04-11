@@ -40,6 +40,28 @@ router.get("/",authentication,async (req,res)=>{
    res.status(500).json({ msg : 'Server Error'});   
   }
 })
+
+//get all mcq details
+router.get("/mcq/:_id",authentication,async (req,res)=>{
+  try {
+
+    const _id=req.params._id;
+
+    const classroom = await Classroom.findById(_id);
+
+    if(!classroom){
+        res.json({msg:"Invalid Id"});
+    }
+    await classroom.populate('obj_exams').execPopulate();
+  
+    res.status(200).json({ obj_exams : classroom.obj_exams });
+  
+  } catch (error) {
+  
+    res.status(500).json({ msg : 'Server Error'});   
+  }
+})
+
 //get specific classroom detail for teacher to see
 router.get("/:_id",authentication,async (req,res)=>{
     try {
