@@ -56,7 +56,7 @@ const ClassHallTeacher = ({location}) => {
 
             const response = await axios.get(`/objective_exam/getExamById/${_id}`);
 
-            console.log(response);
+            // console.log(response);
 
             setMultipleChoice(response.data.exam.mcqType);
 
@@ -73,14 +73,14 @@ const ClassHallTeacher = ({location}) => {
 
            const x = (response.data.exam.timeLength.split(":")[0]*60*60 + response.data.exam.timeLength.split(":")[1]*60 )*1000 ;
 
-            console.log(response.data.exam.timeLength.split(":")[0] ," ",response.data.exam.timeLength.split(":")[1], x);
+            // console.log(response.data.exam.timeLength.split(":")[0] ," ",response.data.exam.timeLength.split(":")[1], x);
           
             setstartDate(response.data.exam.startTime+ x);
 
 
             socket = io();
 
-            console.log(socket);
+            // console.log(socket);
  
             socket.emit( 'joinRoom' , { username: name , room } );
  
@@ -129,7 +129,7 @@ const ClassHallTeacher = ({location}) => {
               <div style={{marginLeft:'-20vw'}}>
 
                 {questions.map(q=>
-                  <div style={{marginTop:'20px',width:'50vw'}}>
+                  <div style={{marginTop:'20px',width:'50vw'}} key={q.questionNo}>
     
                      <div>
                         <span style={{fontSize:'160%'}}>Question No: {q.questionNo}</span>
@@ -178,7 +178,7 @@ const ClassHallTeacher = ({location}) => {
 
       { fillUp.map(q=>
       
-         <div style={{marginTop:'20px',width:'50vw'}}>
+         <div style={{marginTop:'20px',width:'50vw'}} key={q.questionNo}>
              
              <span style={{fontSize:'160%'}}>Fill Up : {q.questionNo}</span>
     

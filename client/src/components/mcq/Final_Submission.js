@@ -48,7 +48,7 @@ const Final_Submission = ({location}) => {
 
             const response = await axios.get(`/objective_exam/getExamById/${_id}`);
 
-            console.log(response);
+          //  console.log(response);
 
             setMultipleChoice(response.data.exam.mcqType);
 
@@ -135,7 +135,7 @@ const Final_Submission = ({location}) => {
             <h1 style={{transform:'translateX(0%)'}}>Get Answers Checked</h1>
 
             {questions.map(q=>
-               <div style={{width:'50vw',marginBottom:'20px'}}>
+               <div style={{width:'50vw',marginBottom:'20px'}} key={q.questionNo}>
                   
                      <div>
                         <span style={{fontSize:'160%'}}>Question No: {q.questionNo}</span>
@@ -147,7 +147,7 @@ const Final_Submission = ({location}) => {
                     
                     {q.options.map(op=>
 
-                       <label style={{marginLeft:'20px'}}>{op.option}
+                       <label style={{marginLeft:'20px'}} key={op.optionNo}>{op.option}
 
                       { q.correct_answer.split(' ').includes(String(op.optionNo)) ?                 
 
@@ -184,7 +184,7 @@ const Final_Submission = ({location}) => {
 
                { fillUp.map(q=>
                     
-                    <div style={{width:'50vw',marginBottom:'20px'}}>
+                    <div style={{width:'50vw',marginBottom:'20px'}} key={q.questionNo}>
 
                           <span style={{fontSize:'160%'}}>Fill Up : {q.questionNo}</span>
     

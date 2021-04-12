@@ -57,7 +57,7 @@ const Mcq_form = ({location}) => {
        
         e.preventDefault();
        
-        console.log(formDetails);
+        //console.log(formDetails);
 
         GetFormCreationDetails(formDetails);
 
@@ -74,13 +74,13 @@ const Mcq_form = ({location}) => {
           }
         }
 
-        console.log(_id);
+        //console.log(_id);
 
         axios.patch(`/objective_exam/${_id}`,data,config)
             
         .then((response) => {
 
-               console.log(response.data);
+               //console.log(response.data);
                
                 if(response.data.msg!==undefined){
                     
@@ -96,7 +96,7 @@ const Mcq_form = ({location}) => {
         }).catch((error) => {
             
             setExamUpdated(false);
-            console.log(error);
+           // console.log(error);
         });
     }
 

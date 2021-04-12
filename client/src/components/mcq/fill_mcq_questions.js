@@ -88,7 +88,7 @@ const Fill_mcq_questions = ({location}) => {
 
     const handleChangeMcq = async (e)=>{
 
-        console.log(e.target.parentElement.parentElement.id);
+        // console.log(e.target.parentElement.parentElement.id);
 
         const list = await questions.map(q=>{
           
@@ -144,7 +144,7 @@ const Fill_mcq_questions = ({location}) => {
             }
         })
         await setQuestions(list);
-        console.log(list);
+        // console.log(list);
     }
 
     const handleChangeFillUp = async (e)=>{
@@ -162,7 +162,7 @@ const Fill_mcq_questions = ({location}) => {
             }
         })
         await setFillUp(list);
-        console.log(list);
+        // console.log(list);
     }
 
     const onSubmit=async (e)=>{
@@ -183,16 +183,16 @@ const Fill_mcq_questions = ({location}) => {
         
         if( parseInt( e.target.id ) === parseInt( questions.length )){
     
-            console.log("question",questions[e.target.id-1]);
+            // console.log("question",questions[e.target.id-1]);
 
             await AddMcqs(questions[e.target.id-1] , _id);
             // await AddMcqs(questions[e.target.id-1],fileD);
     
             await setQuestions([...mcqs,mcqQuestion]);
 
-            console.log("mcqs",mcqs);
+            // console.log("mcqs",mcqs);
 
-            console.log("Questions",questions);
+            // console.log("Questions",questions);
 
         }else{
             //edit
@@ -201,7 +201,7 @@ const Fill_mcq_questions = ({location}) => {
             await setQuestions(mcqs);
         }
 
-        console.log(questions);
+        // console.log(questions);
     }
 
     const onSubmitFillUp = async (e)=>{
@@ -219,7 +219,7 @@ const Fill_mcq_questions = ({location}) => {
 
            await setFillUp(fillUps);
        }
-        console.log(fillUp);
+        // console.log(fillUp);
     }
 
     return (

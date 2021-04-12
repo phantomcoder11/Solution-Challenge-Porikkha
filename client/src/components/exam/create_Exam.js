@@ -125,10 +125,6 @@ const Create_Exam = ()=> {
         });
     }
 
-    const heading={
-        marginLeft:'-400vw'
-    }
-
     const handleClick = (e)=>{
 
         const data = {

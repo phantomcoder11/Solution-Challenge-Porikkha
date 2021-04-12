@@ -21,7 +21,7 @@ const AppState = ({children}) => {
 
         const response = await axios.get(`/exam/getQuestionPaper/${_id}`);
 
-        console.log(response);
+        // console.log(response);
 
         dispatch({
             type:STORE_EXAM,
@@ -31,8 +31,6 @@ const AppState = ({children}) => {
 
     const getCorrespondingExams = async (_id)=>{
         const response = await axios.get(`/classroom/${_id}`);
-
-        console.log(response);
 
         dispatch({
             type:GET_EXAMS,

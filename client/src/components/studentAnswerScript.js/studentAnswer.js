@@ -2,7 +2,7 @@ import React,{ useEffect, useState ,useRef} from 'react';
 import axios from 'axios';
 import WebViewer from "@pdftron/webviewer"
 import "../../css/test.css";
-import { markButton , buttonS , buttonM  , markContainerDesciption , markListStyle , questionAnswer } from './studentCSS';
+import { markButton , buttonS , buttonM  } from './studentCSS';
 import Navbar  from "../navbar/Navbar";
 import {useHistory} from "react-router-dom";
 import Loader from "../classroom_teacher_signup/Loader";
@@ -132,7 +132,7 @@ let _id=  JSON.parse(localStorage.getItem("student_id"));
 
     await setMarksList(marks);
 
-    console.log(marksList);
+   // console.log(marksList);
   }
 
   const changeMarks = async (e)=>{
@@ -166,9 +166,9 @@ let _id=  JSON.parse(localStorage.getItem("student_id"));
   const submitMarks = async (e)=>{
       e.preventDefault();
       
-      console.log('marksList',marksList);
+     // console.log('marksList',marksList);
       
-      console.log('total marks',totalMarks);
+     // console.log('total marks',totalMarks);
       
       const config ={
         header:{
@@ -182,7 +182,7 @@ let _id=  JSON.parse(localStorage.getItem("student_id"));
         status:true
       }
 
-      console.log(stu)
+    //  console.log(stu)
 
       const res = await axios.patch(`/student/updateStudent/${_id}`,stu,config);
 

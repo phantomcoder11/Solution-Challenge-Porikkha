@@ -65,14 +65,14 @@ const McqState=(props)=>{
 
     const res = await axios.post(`/mcqs/add/${_id}`,data,config);
 
-    console.log(res.data);
+    // console.log(res.data);
     
     dispatch({
         type:ADD_MCQ,
         payload:res.data
      })
    }
-   console.log(state.mcqs)
+   //console.log(state.mcqs)
    const AddFillUps = async (data , _id )=>{
 
       const config = {
@@ -83,7 +83,7 @@ const McqState=(props)=>{
      
     const res = await axios.post(`/fill_up/add/${_id}`,data,config);
 
-    console.log(res);
+   // console.log(res);
     
     dispatch({
         type:ADD_FILL_UP,
@@ -101,7 +101,7 @@ const McqState=(props)=>{
     
          const res = await axios.patch(`/mcqs/edit/${q._id}`,q,config);
      
-         console.log(res);
+        // console.log(res);
 
          dispatch({
             type:EDIT_MCQ_RESPONSES,
@@ -119,7 +119,7 @@ const McqState=(props)=>{
       
          const res = await axios.patch(`/fill_up/edit/${q._id}`,q,config);
      
-         console.log(res);
+        // console.log(res);
 
          dispatch({
             type:EDIT_FILL_UP_RESPONSES,

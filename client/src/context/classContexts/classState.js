@@ -33,7 +33,7 @@ const ClassState=(props)=>{
    const getClassroomById = async (_id)=>{
     // try {
       const res = await axios.get(`/classroom/${_id}`); 
-      console.log(res);
+      // console.log(res);
     //   dispatch({
     //      type:GET_CLASSROOM_BY_ID,
     //      payload:res.data

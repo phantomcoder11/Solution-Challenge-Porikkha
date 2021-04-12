@@ -41,7 +41,6 @@ const Exam_Hall = ({location}) => {
     const [ email , setEmail ] = useState('');
     const [ scholarId, setScholarId ] = useState(0);
     const [ examS , setExamS ] = useState(null);
-    const [ submitStatus , setSubmitStatus ] = useState(false);
  
     const arrayBufferToBase64 = (buffer)=>{
 
@@ -202,8 +201,6 @@ const Exam_Hall = ({location}) => {
               document.querySelector(".submit_your_ans form button").style.display="block";
               document.querySelector(".submit_your_ans form label").style.display="block";
                 setResponse("The answer Script is successfully uploaded ");
-
-                setSubmitStatus(true);
 
                 socket.emit("submitAnswerScript",{ username:name , room:room });
 

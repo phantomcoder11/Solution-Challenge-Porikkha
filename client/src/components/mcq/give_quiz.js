@@ -67,7 +67,7 @@ const Give_quiz = ({location}) => {
 
             const response = await axios.get(`/objective_exam/getExamById/${_id}`);
 
-            console.log('Response',response);
+          //  console.log('Response',response);
 
             //navigationStatus
             setNavigate(response.data.exam.navigationStatus);
@@ -100,13 +100,13 @@ const Give_quiz = ({location}) => {
 
            //teacher portal
 
-           socket.on('getUsersToRoom',({room , users})=>{
-               console.log(users);
-           }) 
+          // socket.on('getUsersToRoom',({room , users})=>{
+           //    console.log(users);
+          // }) 
 
            const x = (response.data.exam.timeLength.split(":")[0]*60*60 + response.data.exam.timeLength.split(":")[1]*60 )*1000 ;
 
-           console.log(response.data.exam.timeLength.split(":")[0] ," ",response.data.exam.timeLength.split(":")[1], x);
+         //  console.log(response.data.exam.timeLength.split(":")[0] ," ",response.data.exam.timeLength.split(":")[1], x);
           
            setstartDate(response.data.exam.startTime + x);
            
@@ -116,7 +116,7 @@ const Give_quiz = ({location}) => {
                //teacher portal
 
                socket.on('getUsersToRoom',({room , users})=>{
-                   console.log(users);
+               //    console.log(users);
                }) 
                
                socket.off();
@@ -129,7 +129,7 @@ const Give_quiz = ({location}) => {
 
     const goToNextMcq = (e)=>{
 
-        console.log(count);
+        // console.log(count);
 
         setCount(count+1);
     }
@@ -174,7 +174,7 @@ const Give_quiz = ({location}) => {
                 data = {
                     mcq:list
                 }
-                console.log('mcq',list);
+               // console.log('mcq',list);
             }
             else{
                 data = {
@@ -195,7 +195,7 @@ const Give_quiz = ({location}) => {
             
         .then((response) => {
 
-               console.log(response.data);
+              // console.log(response.data);
                
                 if(response.data.error!==undefined){
                     
@@ -206,7 +206,7 @@ const Give_quiz = ({location}) => {
                           
         }).catch((error) => {
             
-            console.log(error);
+           // console.log(error);
         });
     }
 
@@ -238,7 +238,7 @@ const Give_quiz = ({location}) => {
              
          .then((response) => {
  
-                console.log(response.data);
+              //  console.log(response.data);
                 
                  if(response.data.error!==undefined){
                      
@@ -249,7 +249,7 @@ const Give_quiz = ({location}) => {
                            
          }).catch((error) => {
              
-             console.log(error);
+           //  console.log(error);
          });
     }
 
@@ -272,7 +272,7 @@ const Give_quiz = ({location}) => {
             mcq:list
         });
 
-        console.log(list);
+       // console.log(list);
     }
 
     const handleChangeFillUp = async (e)=>{
@@ -296,7 +296,7 @@ const Give_quiz = ({location}) => {
             fillUp:list
         });
 
-        console.log(list);
+      //  console.log(list);
     }
 
     const handleClickMcq = (e)=>{
@@ -367,7 +367,7 @@ const Give_quiz = ({location}) => {
                    
                     { studentDetails.mcq.map(q=>
                   
-                      <div style={flexQuestion}>
+                      <div style={flexQuestion} key={q.questionNo}>
                          <span style={{padding:'10px'}}>{q.questionNo}</span>
                       
                          <button id={q.questionNo} onClick={handleClickMcq}>{parseInt(q.studentResponse)===-1 ? 'NA' : 'A'}</button>
@@ -386,7 +386,7 @@ const Give_quiz = ({location}) => {
                        
                     {studentDetails.fillUp.map(q=>
                   
-                     <div style={flexQuestion}>
+                     <div style={flexQuestion} key={q.questionNo}>
                         
                           <span style={{padding:'10px'}}>{q.questionNo}</span>
                    

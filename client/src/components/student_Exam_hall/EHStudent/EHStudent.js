@@ -4,13 +4,12 @@ import Face from '../Face/Face'
 import './EHStudent.css';
 import {useHistory} from "react-router-dom"
 import pdf from './pdf/DSproject.pdf'
-import { browser } from '@tensorflow/tfjs-core';
+
 import webCamContext from '../../../context/webcamContext/webcamContext';
 
 const Ehstudent =()=>{
 
 
-    const history=useHistory();
      const {check_web_cam} =useContext(webCamContext);
     // console.log(check);
     const [click,setClick]=useState(false);
@@ -18,13 +17,6 @@ const Ehstudent =()=>{
     
     const x = 500000;
     const startDate = new Date().getTime() + x;
-    const handleClick=()=>{
-        
-        setClick(!click);
-    }
-
-    
-
 
 
     useEffect(()=>{

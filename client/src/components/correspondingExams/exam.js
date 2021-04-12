@@ -25,12 +25,13 @@ const Exam=()=>{
     useEffect( () => {
 
            const fetchData3 = async ()=>{
-            await getCorrespondingExams(_id);
+            
+            getCorrespondingExams(_id);
 
-            await setExams(correspondingExams);
+            const exams = await axios.get(`/classroom/${_id}`);
+
+            await setExams(exams.data);
  
-            console.log(correspondingExams);
-
             const response = await axios.get(`/classroom/mcq/${_id}`);
 
             if(response.data.msg!==undefined){
@@ -41,8 +42,6 @@ const Exam=()=>{
             }
             
             setObjExams(response.data.obj_exams);
-
-            console.log(response.data.obj_exams);
             }
             fetchData3();
 
@@ -58,6 +57,7 @@ const Exam=()=>{
                             <h2><Link to = {`/exam/create/${_id}`} >Create Exam</Link></h2>
                         </div>
                     </div>
+                    { error!=='' ? null : null }
                     <div className="history" >
                         <h4 style={{color:'black',fontWeight:'bold'}}>HISTORY</h4>
                     </div>
@@ -79,7 +79,7 @@ const Exam=()=>{
                                 <Noresults /> : 
                                  search.map(exam =>(
                                    
-                                    <tr style={{background:'#F2F0F0',marginBottom:'20px'}}>
+                                    <tr style={{background:'#F2F0F0',marginBottom:'20px'}} key={exam._id}>
                                     
                                        <td><Link to ={`/exam/details/${exam._id}`} style={{textDecoration:'none',color:'black'}}>{exam._id}</Link></td>
                                     
@@ -92,7 +92,7 @@ const Exam=()=>{
                                 
                                  exams.map(exam =>(
                                 
-                                   <tr style={{background:'#F2F0F0',marginBottom:'20px'}}>
+                                   <tr style={{background:'#F2F0F0',marginBottom:'20px'}} key={exam._id}>
                                    
                                        <td><Link to ={`/exam/details/${exam._id}?status=1`} style={{textDecoration:'none',color:'black'}}>{exam._id}</Link></td>
                                    
@@ -133,7 +133,7 @@ const Exam=()=>{
                               
                                  objExams.map(exam =>(
                               
-                                    <tr style={{background:'#F2F0F0',marginBottom:'20px'}}>
+                                    <tr style={{background:'#F2F0F0',marginBottom:'20px'}} key={exam._id}>
                                     
                                        <td><Link to ={`/exam/details/${exam._id}?status=2`} style={{textDecoration:'none',color:'black'}}>{exam._id}</Link></td>
                                     

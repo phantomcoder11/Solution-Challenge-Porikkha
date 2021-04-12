@@ -15,15 +15,11 @@ const Exam=({location})=>{
 
     const { _id } = useParams();
 
-    const [ students , setStudents ] = useState(null);
-
     const [ exam , setExam ] = useState(null);
 
     const [ studentsLength , setStudentLength ] = useState(0);
 
     const [ _status , setStatus ] = useState(-1);
-
-    const [ url , setUrl ] = useState('');
 
     const { getStudents , searchStudentName , searchStudentId , clearStudent , studentsofExam , search , getCheckStatus , checkedStatus } = useContext(StudentContext);
 
@@ -39,8 +35,6 @@ const Exam=({location})=>{
        }
 
     }
-
-    console.log(url);
 
     const handleChangeScholarId = (e)=>{
 
@@ -70,11 +64,9 @@ const Exam=({location})=>{
             response = await axios.get(`/objective_exam/getExamDetails/${_id}`);
         }
 
-        console.log(response);
+       // console.log(response);
 
         await setExam(response.data.exam);
-
-        await setStudents(response.data.students);
 
         setStudentLength(response.data.students.length);
 
@@ -173,7 +165,7 @@ const Exam=({location})=>{
                 <Noresults /> : 
                 search.map(
                   student=>(
-                        <tr style={{background:'#F2F0F0'}}>
+                        <tr style={{background:'#F2F0F0'}} key={student._id}>
                          
                           <td>
                             { parseInt(_status)===1 ? 
@@ -205,7 +197,7 @@ const Exam=({location})=>{
                  
                   student=>(
                  
-                      <tr style={{background:'#F2F0F0'}}>
+                      <tr style={{background:'#F2F0F0'}} key={student._id}>
                     
                         <td>
 

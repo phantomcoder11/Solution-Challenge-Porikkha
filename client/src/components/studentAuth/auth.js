@@ -21,7 +21,7 @@ const Auth = () => {
     const [ clicked , setClicked ] = useState(false);
 
     const responseSuccessGoogle = async (res) => {
-    console.log(res);
+   // console.log(res);
     
     const data = { tokenId: res.tokenId };
     
@@ -30,7 +30,7 @@ const Auth = () => {
       data
       );
       
-      console.log(response);
+    //  console.log(response);
       
       const { email_verified } = response.data;
       
@@ -49,11 +49,11 @@ const Auth = () => {
   
   const responseErrorGoogle = (res)=>{
      
-    console.log(res);
+  //  console.log(res);
 
-   console.log(res.profileObj);
+  // console.log(res.profileObj);
 
-   console.log(res.tokenId);
+  // console.log(res.tokenId);
 
    setError(true);
 
