@@ -75,7 +75,7 @@ const Final_Submission = ({location}) => {
             let studentResponsesMcq=[];
 
             studentResponse.data.student.mcq.map(res=>{
-                studentResponsesMcq.push(res.studentResponse);
+                studentResponsesMcq.push(res.studentResponse.substring(1));
             })
 
             setStudentResponseMcq(studentResponsesMcq);
@@ -83,6 +83,7 @@ const Final_Submission = ({location}) => {
             let studentResponsesFillUp=[];
 
             studentResponse.data.student.fillUp.map(res=>{
+
                 studentResponsesFillUp.push(res.studentResponse);
             })
 

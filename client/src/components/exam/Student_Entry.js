@@ -158,8 +158,9 @@ const Student_Entry = ({location}) => {
             </form>
             
             {error!==null ? <span style={{color:'red',fontFamily:'sans-serif',fontWeight:'bold',position:'absolute',marginLeft:'50vw',top:'30vh',transform:'translate(-50%,-50%)'}}>Error: {error}</span> : null}
-
-            { registered===true ? 
+           
+            <div style={{marginLeft:'50vw',transform:'translateX(-22%',marginTop:'25px'}}>
+                { registered===true ? 
 
                  parseInt(examMode)===1000 ? 
 
@@ -169,6 +170,7 @@ const Student_Entry = ({location}) => {
                 
             : null }
 
+            </div>
         </div>
     )
 }
